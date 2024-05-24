@@ -1,0 +1,60 @@
+.sectionHeader {
+    -unity-font-style: bold;
+    font-size: 14px;
+    -unity-text-align: middle-left;
+    border-bottom-width: 2px;
+    border-top-width: 2px;
+    border-left-color: rgb(77, 77, 77);
+    border-right-color: rgb(77, 77, 77);
+    border-top-color: rgb(77, 77, 77);
+    border-bottom-color: rgb(77, 77, 77);
+    padding-left: 5px;
+}
+
+.gridTile {
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.gridTile Label {
+    display: none;
+}
+
+.gridTile .unity-toggle__checkmark {
+    display: flex;
+    width: 20px;
+    max-width: 20px;
+    height: 20px;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.gridTile .unity-toggle__input {
+    display: flex;
+    margin-top: 0;
+    margin-right: 0;
+    margin-bottom: 0;
+    margin-left: 0;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+}
+
+.numContainer .unity-slider__input {
+    display: flex;
+    padding-left: 10px;
+    padding-right: 10px;
+}

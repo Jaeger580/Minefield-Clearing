@@ -1,0 +1,20 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="True">
+    <Style src="project://database/Assets/Scripts/UI%20Scripts/UITK/CustomInspectorUSS.uss?fileID=7433441132597879392&amp;guid=e813a7278e6034dbc920409a51d08d09&amp;type=3#CustomInspectorUSS" />
+    <ui:VisualElement name="Pane1" style="flex-grow: 1;">
+        <ui:VisualElement name="Vars" style="flex-grow: 1;">
+            <ui:Label tabindex="-1" text="Grid Properties" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="sectionHeader" />
+            <ui:Toggle label="Toggle" name="MineTile" class="gridTile" style="display: none;" />
+            <ui:VisualElement name="NumbersContainer" class="numContainer" style="flex-grow: 1;">
+                <uie:PropertyField binding-path="dims" name="DimensionsField" />
+                <uie:PropertyField name="MinePercent" binding-path="minePercentChance" />
+            </ui:VisualElement>
+            <ui:VisualElement name="AutomationContainer" style="flex-direction: row; justify-content: space-around;">
+                <ui:Button text="Randomize Mine Placement" parse-escape-sequences="true" display-tooltip-when-elided="true" name="RandomizeMines" style="margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 2px; padding-right: 5px; padding-bottom: 2px; padding-left: 5px; align-self: center;" />
+                <ui:Button text="Clear Mines" parse-escape-sequences="true" display-tooltip-when-elided="true" name="ClearMines" style="margin-top: 5px; margin-right: 5px; margin-bottom: 5px; margin-left: 5px; padding-top: 2px; padding-right: 5px; padding-bottom: 2px; padding-left: 5px; align-self: center;" />
+            </ui:VisualElement>
+            <ui:VisualElement name="GridContainer" style="flex-grow: 0; flex-direction: row; flex-wrap: wrap-reverse; border-left-color: rgb(77, 77, 77); border-right-color: rgb(77, 77, 77); border-top-color: rgb(77, 77, 77); border-bottom-color: rgb(77, 77, 77); border-top-width: 4px; border-right-width: 4px; border-bottom-width: 4px; border-left-width: 4px; border-top-left-radius: 10px; border-top-right-radius: 10px; border-bottom-right-radius: 10px; border-bottom-left-radius: 10px; margin-top: 0; margin-right: 0; margin-bottom: 0; margin-left: 0; padding-top: 0; padding-right: 0; padding-bottom: 0; padding-left: 0; align-items: center; justify-content: center; align-self: center; background-color: rgb(77, 77, 77);" />
+        </ui:VisualElement>
+    </ui:VisualElement>
+    <ui:VisualElement name="HiddenPane" style="flex-grow: 1; display: flex;" />
+    <ui:VisualElement name="Pane3" style="flex-grow: 1;" />
+</ui:UXML>
