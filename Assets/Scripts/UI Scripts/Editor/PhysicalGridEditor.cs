@@ -5,6 +5,7 @@ using UnityEditor.UIElements;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+//ATW 5/23/24
 [CustomEditor(typeof(PhysicalGrid))]
 public class PhysicalGridEditor : Editor
 {
@@ -78,6 +79,9 @@ public class PhysicalGridEditor : Editor
                 //If the old dictionary already has this tile, set this tile's value equal to the old value
                 if (physicalGrid.mineGrid.DictionaryData.TryGetValue(new(newX, newY), out bool val)) gridTile.value = val;
 
+                if (val) gridTile.AddToClassList("mineTile");
+                else gridTile.RemoveFromClassList("mineTile");
+
                 mineGrid.KeysList.Add(new(newX, newY));     //Add the tile to the list of tiles
                 mineGrid.ValuesList.Add(gridTile.value);    //Add the mine value to the list of mines
 
@@ -97,5 +101,8 @@ public class PhysicalGridEditor : Editor
         //Update the Values list at the matching index of the tile to be the new value, then update the dictionary
         mineGrid.ValuesList[mineGrid.KeysList.IndexOf(tile)] = newValue;
         mineGrid.UpdateDictionary();
+        var gridTile = gridContainer.Q<Toggle>($"Tile ({tile.x}, {tile.y})");
+        if (newValue) gridTile.AddToClassList("mineTile");
+        else gridTile.RemoveFromClassList("mineTile");
     }
 }

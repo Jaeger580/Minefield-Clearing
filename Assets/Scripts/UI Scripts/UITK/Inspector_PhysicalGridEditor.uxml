@@ -3,7 +3,7 @@
     <ui:VisualElement name="Pane1" style="flex-grow: 1;">
         <ui:VisualElement name="Vars" style="flex-grow: 1;">
             <ui:Label tabindex="-1" text="Grid Properties" parse-escape-sequences="true" display-tooltip-when-elided="true" name="Title" class="sectionHeader" />
-            <ui:Toggle label="Toggle" name="MineTile" class="gridTile" style="display: none;" />
+            <ui:Toggle label="Toggle" name="MineTile" class="gridTile mineTile" style="display: none;" />
             <ui:VisualElement name="NumbersContainer" class="numContainer" style="flex-grow: 1;">
                 <uie:PropertyField binding-path="dims" name="DimensionsField" />
                 <uie:PropertyField name="MinePercent" binding-path="minePercentChance" />
