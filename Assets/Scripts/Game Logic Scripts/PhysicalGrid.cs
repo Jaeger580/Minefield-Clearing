@@ -47,9 +47,25 @@ public class PhysicalGrid : MonoBehaviour
 	[SerializeField] private float minePercentChance;
 	 
     [Serializable] public class GridMap : Map<Vector2Int, bool> { }
-	public GridMap MineGrid = new();	//Public because the editor needs access
+	public GridMap MineGrid = new();    //Public because the editor needs access
 
-	public void RandomizeMines()
+    private void Start()
+    {
+        /*
+         * foreach(pair in MineGrid.dictionary)
+         *		Instantiate(tile prefab under some parent)
+         *		place it based on pair's key (key = x,y coordinate)
+         *			-> tile.SetPosition(new Vector3(xvalue * some offset, 0, yvalue * some offset))
+         *		toggle whether it's supposed to be a mine based on pair's value (value = is it a mine?)
+         *		Everything else is handled by prefab itself
+         *		
+         *		int numAdjMines = Physics.checkarea on the mine layer
+         *		set my prefab text numAdjMines
+         *		disable UI for it (enables on enter)
+         */
+    }
+
+    public void RandomizeMines()
     {
 		foreach(var pair in MineGrid.DictionaryData)
         {
