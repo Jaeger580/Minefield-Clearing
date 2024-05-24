@@ -41,9 +41,15 @@ public class PhysicalGridEditor : Editor
         buttonClearMines = root.Q<Button>("ClearMines");
         buttonClearMines.RegisterCallback<ClickEvent>((evt) => ClearMinesClicked());
 
-        physicalGrid.mineGrid.UpdateDictionary();
+        physicalGrid.MineGrid.UpdateDictionary();
 
         return root;
+    }
+
+    private void RandomizeMinesClicked()
+    {
+        physicalGrid.RandomizeMines();
+        OnDimsChanged(null);
     }
 
     private void ClearMinesClicked()
@@ -51,16 +57,11 @@ public class PhysicalGridEditor : Editor
         physicalGrid.ClearMines();
         OnDimsChanged(null);
     }
-    private void RandomizeMinesClicked()
-    {
-        physicalGrid.RandomizeMines();
-        OnDimsChanged(null);
-    }
 
     private void OnDimsChanged(ChangeEvent<Vector2Int> evt)
     {//Whenever we change the dimensions of the grid,
         gridContainer.Clear();                  //Clear the inspector grid
-        var mineGrid = physicalGrid.mineGrid;   //store a reference we reuse
+        var mineGrid = physicalGrid.MineGrid;   //store a reference we reuse
         mineGrid.KeysList.Clear();              //Clear all Key Value Pairs (KVPs) so we can re-add them
         mineGrid.ValuesList.Clear();
 
@@ -77,7 +78,7 @@ public class PhysicalGridEditor : Editor
                 gridContainer.Add(gridTile);
 
                 //If the old dictionary already has this tile, set this tile's value equal to the old value
-                if (physicalGrid.mineGrid.DictionaryData.TryGetValue(new(newX, newY), out bool val)) gridTile.value = val;
+                if (physicalGrid.MineGrid.DictionaryData.TryGetValue(new(newX, newY), out bool val)) gridTile.value = val;
 
                 if (val) gridTile.AddToClassList("mineTile");
                 else gridTile.RemoveFromClassList("mineTile");
@@ -96,7 +97,7 @@ public class PhysicalGridEditor : Editor
 
     private void OnMineTileChanged(Vector2Int tile, bool newValue)
     {//When a mine is placed or removed,
-        var mineGrid = physicalGrid.mineGrid;
+        var mineGrid = physicalGrid.MineGrid;
 
         //Update the Values list at the matching index of the tile to be the new value, then update the dictionary
         mineGrid.ValuesList[mineGrid.KeysList.IndexOf(tile)] = newValue;

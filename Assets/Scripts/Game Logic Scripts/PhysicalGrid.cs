@@ -41,36 +41,38 @@ public class Map<TKey, TValue>
 
 public class PhysicalGrid : MonoBehaviour
 {
+	[Min(1)]
     [SerializeField] private Vector2Int dims;
 	[Range(0f, 1f)]
 	[SerializeField] private float minePercentChance;
 	 
     [Serializable] public class GridMap : Map<Vector2Int, bool> { }
-	//[HideInInspector]
-	public GridMap mineGrid = new();
-
-	private void Start()
-    {
-        foreach (var pair in mineGrid.DictionaryData)
-        {
-            if (pair.Value) print($"MINE AT: ({pair.Key.x}, {pair.Key.y})");
-        }
-    }
+	public GridMap MineGrid = new();	//Public because the editor needs access
 
 	public void RandomizeMines()
     {
-		foreach(var pair in mineGrid.DictionaryData)
+		foreach(var pair in MineGrid.DictionaryData)
         {
-			mineGrid.ValuesList[mineGrid.KeysList.IndexOf(pair.Key)] = UnityEngine.Random.Range(0f, 0.99f) < minePercentChance;
+			MineGrid.ValuesList[MineGrid.KeysList.IndexOf(pair.Key)] = UnityEngine.Random.Range(0f, 0.99f) < minePercentChance;
 		}
-		mineGrid.UpdateDictionary();
+		MineGrid.UpdateDictionary();
     }
+
 	public void ClearMines()
 	{
-		foreach (var pair in mineGrid.DictionaryData)
+		foreach (var pair in MineGrid.DictionaryData)
 		{
-			mineGrid.ValuesList[mineGrid.KeysList.IndexOf(pair.Key)] = false;
+			MineGrid.ValuesList[MineGrid.KeysList.IndexOf(pair.Key)] = false;
 		}
-		mineGrid.UpdateDictionary();
+		MineGrid.UpdateDictionary();
+	}
+
+	[ContextMenu("Print Mines To Console")]
+	private void PrintMinesToConsole()
+	{
+		foreach (var pair in MineGrid.DictionaryData)
+		{//Purely for debugging purposes - checks whether the mines line up with the toggleboxes in the inspector
+			if (pair.Value) print($"MINE AT: ({pair.Key.x}, {pair.Key.y})");
+		}
 	}
 }
