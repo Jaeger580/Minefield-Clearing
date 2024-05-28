@@ -57,9 +57,15 @@ public class PhysicalGrid : MonoBehaviour
 
 	private LayerMask mineLayer;
 
+	[SerializeField] private GridViewUI gridViewUI;
+
     private void Start()
     {
-        /*
+		//if (!TryGetComponent(out gridViewUI))
+		//{
+		//	print("ERR: SHOULD HAVE A GRIDUI COMPONENT REFERENCED.");
+		//}
+		/*
          * foreach(pair in MineGrid.dictionary)
          *		Instantiate(tile prefab under some parent)
          *		place it based on pair's key (key = x,y coordinate)
@@ -92,10 +98,12 @@ public class PhysicalGrid : MonoBehaviour
 			var tileTrans = tile.transform;
 			int numMines = Physics.OverlapBoxNonAlloc(tile.transform.position,  tileRadius * Vector3.one, _, Quaternion.identity, mineLayer);
 			tile.SetAdjacentMines(numMines);
+			gridViewUI.GenerateAndBindButton(tile);
 		}
+		gridViewUI.UpdateContainerSize(dims);
 	}
 
-    public void RandomizeMines()
+	public void RandomizeMines()
     {
 		foreach(var pair in MineGrid.DictionaryData)
         {

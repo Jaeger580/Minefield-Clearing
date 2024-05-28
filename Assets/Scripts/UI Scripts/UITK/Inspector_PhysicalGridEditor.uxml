@@ -9,6 +9,7 @@
                 <uie:PropertyField binding-path="tileRadius" name="TileRadiusField" />
                 <uie:ObjectField label="Physical Tile Parent" name="PhysicalTileParentField" binding-path="physicalTileParent" />
                 <uie:ObjectField label="Physical Tile Prefab" name="PhysicalTilePrefabField" binding-path="physicalTilePrefab" />
+                <uie:ObjectField label="Grid View UI" name="GridViewUIField" binding-path="gridViewUI" />
                 <uie:PropertyField name="MinePercent" binding-path="minePercentChance" />
             </ui:VisualElement>
             <ui:VisualElement name="AutomationContainer" style="flex-direction: row; justify-content: space-around;">
