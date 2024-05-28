@@ -49,6 +49,14 @@ public class PhysicalGrid : MonoBehaviour
     [Serializable] public class GridMap : Map<Vector2Int, bool> { }
 	public GridMap MineGrid = new();    //Public because the editor needs access
 
+	[SerializeField] private Transform physicalTileParent;
+	[SerializeField] private PhysicalTile physicalTilePrefab;
+	[SerializeField] private float tileRadius = 1f;
+
+	private List<PhysicalTile> physicalTiles = new();
+
+	private LayerMask mineLayer;
+
     private void Start()
     {
         /*
@@ -63,7 +71,29 @@ public class PhysicalGrid : MonoBehaviour
          *		set my prefab text numAdjMines
          *		disable UI for it (enables on enter)
          */
-    }
+		mineLayer |= 1 << LayerMask.NameToLayer("Mine");
+		foreach (var pair in MineGrid.DictionaryData)
+        {
+			var newTile = Instantiate(physicalTilePrefab, physicalTileParent);
+			var newTileTrans = newTile.transform;
+			newTileTrans.localPosition = Vector3.zero;
+			newTileTrans.SetLocalPositionAndRotation(new Vector3(pair.Key.x * tileRadius, 0f ,pair.Key.y * tileRadius),Quaternion.identity);
+
+			newTile.name = $"Tile {pair.Key}";
+
+			if(pair.Value) newTile.SetMine();
+
+			physicalTiles.Add(newTile);
+        }
+
+		foreach(var tile in physicalTiles)
+        {
+			Collider[] _ = new Collider[12];
+			var tileTrans = tile.transform;
+			int numMines = Physics.OverlapBoxNonAlloc(tile.transform.position,  tileRadius * Vector3.one, _, Quaternion.identity, mineLayer);
+			tile.SetAdjacentMines(numMines);
+		}
+	}
 
     public void RandomizeMines()
     {
