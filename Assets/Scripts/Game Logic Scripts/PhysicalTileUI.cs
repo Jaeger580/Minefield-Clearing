@@ -10,18 +10,18 @@ public class PhysicalTileUI : MonoBehaviour
     private Transform mainCamTrans;
     private GameObject minesNearbyObject;
 
-    private void OnEnable()
+    private void Start()
     {
         physicalTile.AdjacentMinesUpdatedEvent += NearbyMinesUpdated;   //if BEFORE mines set
         minesNearbyText.text = $"{physicalTile.numAdjacentMines}";      //if AFTER mines set
 
+        physicalTile.TileEnteredEvent += RevealTile;
+
         minesNearbyObject = minesNearbyText.gameObject;
         if (minesNearbyObject.activeInHierarchy) minesNearbyObject.SetActive(false);
-    }
 
-    private void Start()
-    {
         mainCamTrans = Camera.main.transform;
+
     }
 
     private void NearbyMinesUpdated(int nearby)

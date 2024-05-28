@@ -11,9 +11,13 @@ public class PhysicalTile : MonoBehaviour
     public delegate void OnAdjacentMinesUpdated(int val);
     public OnAdjacentMinesUpdated AdjacentMinesUpdatedEvent;
 
+    public delegate void OnTileEntered();
+    public OnTileEntered TileEnteredEvent;
+
     public void OnDisable()
     {
         AdjacentMinesUpdatedEvent = null;
+        TileEnteredEvent = null;
     }
 
     public void SetMine()
@@ -26,5 +30,11 @@ public class PhysicalTile : MonoBehaviour
     {
         numAdjacentMines = hasMine ? inVicinity - 1 : inVicinity;
         AdjacentMinesUpdatedEvent?.Invoke(numAdjacentMines);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        TileEnteredEvent?.Invoke();
+        if (hasMine) GameOverScreen.instance.DisplayGameOver(false);
     }
 }

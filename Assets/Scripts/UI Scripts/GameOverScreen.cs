@@ -23,6 +23,7 @@ public class GameOverScreen : MonoBehaviour
 
     public void DisplayGameOver(bool win)
     {
+        //TimeController.ChangeTimeScale(0f);
         winLoseText.text = win ? "You win!" : "You lose!";
         gameOverScreenObject.SetActive(true);
     }
@@ -37,5 +38,13 @@ public class GameOverScreen : MonoBehaviour
     private void ExampleLose()
     {//Unit test, basically
         DisplayGameOver(false);
+    }
+}
+
+static public class TimeController
+{
+    static public void ChangeTimeScale(float newTimeScale)
+    {
+        Time.timeScale = newTimeScale;
     }
 }

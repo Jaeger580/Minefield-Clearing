@@ -35,8 +35,8 @@ public class Map<TKey, TValue>
 		for(int i = 0; i < keysList.Count; i++)
         {
 			DictionaryData.TryAdd(KeysList[i], ValuesList[i]);
-        } 
-    }
+        }
+	}
 }
 
 public class PhysicalGrid : MonoBehaviour
@@ -48,6 +48,8 @@ public class PhysicalGrid : MonoBehaviour
 	 
     [Serializable] public class GridMap : Map<Vector2Int, bool> { }
 	public GridMap MineGrid = new();    //Public because the editor needs access
+	public List<Vector2Int> keys = new();
+	public List<bool> values = new();
 
 	[SerializeField] private Transform physicalTileParent;
 	[SerializeField] private PhysicalTile physicalTilePrefab;
@@ -55,7 +57,7 @@ public class PhysicalGrid : MonoBehaviour
 
 	private List<PhysicalTile> physicalTiles = new();
 
-	private LayerMask mineLayer;
+	private LayerMask mineMask;
 
 	[SerializeField] private GridViewUI gridViewUI;
 
@@ -77,13 +79,15 @@ public class PhysicalGrid : MonoBehaviour
          *		set my prefab text numAdjMines
          *		disable UI for it (enables on enter)
          */
-		mineLayer |= 1 << LayerMask.NameToLayer("Mine");
+		mineMask |= 1 << LayerMask.NameToLayer("Mine");
+		MineGrid.UpdateDictionary();	//REQUIRED: needs to update on load, otherwise stays empty
+
 		foreach (var pair in MineGrid.DictionaryData)
         {
 			var newTile = Instantiate(physicalTilePrefab, physicalTileParent);
 			var newTileTrans = newTile.transform;
 			newTileTrans.localPosition = Vector3.zero;
-			newTileTrans.SetLocalPositionAndRotation(new Vector3(pair.Key.x * tileRadius, 0f ,pair.Key.y * tileRadius),Quaternion.identity);
+			newTileTrans.SetLocalPositionAndRotation(new Vector3(pair.Key.x * tileRadius, 0f, pair.Key.y * tileRadius), Quaternion.identity);
 
 			newTile.name = $"Tile {pair.Key}";
 
@@ -96,7 +100,7 @@ public class PhysicalGrid : MonoBehaviour
         {
 			Collider[] _ = new Collider[12];
 			var tileTrans = tile.transform;
-			int numMines = Physics.OverlapBoxNonAlloc(tile.transform.position,  tileRadius * Vector3.one, _, Quaternion.identity, mineLayer);
+			int numMines = Physics.OverlapBoxNonAlloc(tile.transform.position,  tileRadius * Vector3.one, _, Quaternion.identity, mineMask);
 			tile.SetAdjacentMines(numMines);
 			gridViewUI.GenerateAndBindButton(tile);
 		}
