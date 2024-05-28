@@ -14,10 +14,14 @@ public class PhysicalTile : MonoBehaviour
     public delegate void OnTileEntered();
     public OnTileEntered TileEnteredEvent;
 
+    public delegate void OnFlagChanged(bool flagShowing);
+    public OnFlagChanged FlagChangedEvent;
+
     public void OnDisable()
     {
         AdjacentMinesUpdatedEvent = null;
         TileEnteredEvent = null;
+        FlagChangedEvent = null;
     }
 
     public void SetMine()
@@ -36,5 +40,10 @@ public class PhysicalTile : MonoBehaviour
     {
         TileEnteredEvent?.Invoke();
         if (hasMine) GameOverScreen.instance.DisplayGameOver(false);
+    }
+
+    public void UpdateFlagPlacement(bool flagShowing)
+    {
+        FlagChangedEvent?.Invoke(flagShowing);
     }
 }

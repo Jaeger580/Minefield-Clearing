@@ -1,10 +1,14 @@
 ﻿using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+using System.Collections.Generic;
 
-public class GridViewUIButton : MonoBehaviour
+public class PhysicalTileUI : MonoBehaviour
 {
+    [SerializeField] private PhysicalTile physicalTile;
     [SerializeField] private TMP_Text minesNearbyText;
-    [ReadOnly] public PhysicalTile physicalTile;
+    [SerializeField] private GameObject flagObject;
+    private Transform mainCamTrans;
     private GameObject minesNearbyObject;
 
     private void Start()
@@ -13,9 +17,12 @@ public class GridViewUIButton : MonoBehaviour
         minesNearbyText.text = $"{physicalTile.numAdjacentMines}";      //if AFTER mines set
 
         physicalTile.TileEnteredEvent += RevealTile;
+        physicalTile.FlagChangedEvent += ToggleFlag;
 
         minesNearbyObject = minesNearbyText.gameObject;
         if (minesNearbyObject.activeInHierarchy) minesNearbyObject.SetActive(false);
+
+        mainCamTrans = Camera.main.transform;
     }
 
     private void NearbyMinesUpdated(int nearby)
@@ -23,8 +30,28 @@ public class GridViewUIButton : MonoBehaviour
         minesNearbyText.text = $"{nearby}";
     }
 
+    private void Update()
+    {
+        if (!gameObject.activeInHierarchy) return;
+        var lookAtPos = transform.position - mainCamTrans.position;
+
+        lookAtPos.y = 0f;
+
+        transform.LookAt(lookAtPos);
+    }
+
     public void RevealTile()
     {
         if (!minesNearbyObject.activeInHierarchy) minesNearbyObject.SetActive(true);
+    }
+
+    public void ToggleFlag(bool flagged)
+    {
+        flagObject.SetActive(flagged);
+    }
+
+    public void ToggleFlag()
+    {
+        flagObject.SetActive(!flagObject.activeInHierarchy);
     }
 }
