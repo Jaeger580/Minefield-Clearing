@@ -48,8 +48,6 @@ public class PhysicalGrid : MonoBehaviour
 	 
     [Serializable] public class GridMap : Map<Vector2Int, bool> { }
 	public GridMap MineGrid = new();    //Public because the editor needs access
-	public List<Vector2Int> keys = new();
-	public List<bool> values = new();
 
 	[SerializeField] private Transform physicalTileParent;
 	[SerializeField] private PhysicalTile physicalTilePrefab;
