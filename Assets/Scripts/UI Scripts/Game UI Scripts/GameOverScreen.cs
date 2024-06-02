@@ -32,6 +32,7 @@ public class GameOverScreen : MonoBehaviour
     public void DisplayGameOver(bool win)
     {
         gameIsOver = true;
+        Cursor.lockState = CursorLockMode.Confined;
         TimeController.ChangeTimeScale(0f);
         //TimeController.ChangeTimeScale(0f);
         winLoseText.text = win ? "You win!" : "You lose!";
