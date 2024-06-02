@@ -101,7 +101,7 @@ BoxCollider:
   m_LayerOverridePriority: 0
   m_IsTrigger: 0
   m_ProvidesContacts: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -311,6 +311,7 @@ MonoBehaviour:
   mineObject: {fileID: 5565711171104419295}
   hasMine: 0
   numAdjacentMines: 0
+  hasFlag: 0
 --- !u!65 &7183441932423935117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -330,7 +331,7 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 10, y: 5, z: 10}
+  m_Size: {x: 10, y: 2, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &5178311326727059771
 GameObject:

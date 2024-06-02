@@ -45,4 +45,23 @@ public class PlayerLook : MonoBehaviour
     {
         mouseInput = context.ReadValue<Vector2>();
     }
+
+    public void Mark(InputAction.CallbackContext context) 
+    {
+        if (context.started) 
+        {
+            RaycastHit hit;
+            if (Physics.Raycast(mainCamera.transform.position, mainCamera.transform.forward, out hit, 6f))
+            {
+                Debug.Log(hit.transform.name);
+                if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Tile")) 
+                {
+                    PhysicalTile tile = hit.transform.GetComponent<PhysicalTile>();
+                    
+                    tile.UpdateFlagPlacement(!tile.hasFlag);
+                } 
+            }
+        }
+        
+    }
 }
