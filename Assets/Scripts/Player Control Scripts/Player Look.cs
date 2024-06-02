@@ -21,7 +21,7 @@ public class PlayerLook : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         HandleLook(mouseInput);
     }
