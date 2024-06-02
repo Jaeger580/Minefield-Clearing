@@ -273,6 +273,17 @@
                     "action": "ToggleGrid",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "db4d372c-f1b1-431c-8454-e90fa027e739",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGrid",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },

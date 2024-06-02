@@ -19,10 +19,13 @@ public class PlayerLook : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
     private void Update()
     {
+        if (UIToggler.uiIsOn) return;
+        if (GameOverScreen.instance.gameIsOver) return;
         HandleLook(mouseInput);
     }
 
