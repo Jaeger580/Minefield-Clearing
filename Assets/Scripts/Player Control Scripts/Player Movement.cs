@@ -19,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (UIToggler.uiIsOn) return;
+        if (GameOverScreen.instance.gameIsOver) return;
         HandleMovement(moveInput);
     }
 
