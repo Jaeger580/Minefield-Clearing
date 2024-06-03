@@ -48,6 +48,7 @@ public class PlayerLook : MonoBehaviour
 
     public void Mark(InputAction.CallbackContext context) 
     {
+        if (UIToggler.uiIsOn) return;
         if (context.started) 
         {
             RaycastHit hit;

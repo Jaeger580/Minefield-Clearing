@@ -41,7 +41,7 @@ public class GridViewUIButton : MonoBehaviour
 
     public void ToggleFlag(bool flagged)
     {
-        if (flagUIObject.activeInHierarchy == flagged) return;
+        if (flagUIObject.activeSelf == flagged) return;
 
         flagUIObject.SetActive(flagged);
         ButtonFlagChangedEvent?.Invoke(flagUIObject.activeInHierarchy);
