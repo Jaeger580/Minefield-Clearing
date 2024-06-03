@@ -13,7 +13,8 @@ public class PhysicalGridEditor : Editor
 
     private PhysicalGrid physicalGrid;
 
-    private PropertyField _dimensionsField;
+    private PropertyField _dimensionsField, _tileRadiusField;
+    private ObjectField _physicalTileParentField, _physicalTilePrefabField;
     private SerializedProperty _vector2Property;
 
     private VisualElement gridContainer;

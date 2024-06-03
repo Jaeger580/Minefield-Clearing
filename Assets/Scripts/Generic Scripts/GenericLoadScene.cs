@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -43,5 +44,13 @@ public class GenericLoadScene : MonoBehaviour
             SceneManager.LoadSceneAsync(0);
         else
             SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+
+    static public void QuitGame()
+    {
+        Application.Quit();
+#if UNITY_EDITOR
+        EditorApplication.ExitPlaymode();
+#endif
     }
 }
