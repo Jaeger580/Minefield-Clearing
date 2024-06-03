@@ -46,7 +46,7 @@ public class PhysicalTile : MonoBehaviour
 
     public void UpdateFlagPlacement(bool flagShowing)
     {
-        FlagChangedEvent?.Invoke(flagShowing);
         hasFlag = flagShowing;
+        FlagChangedEvent?.Invoke(flagShowing);
     }
 }
