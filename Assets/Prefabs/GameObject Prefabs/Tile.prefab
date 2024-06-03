@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4262171224168548905}
   - component: {fileID: 8744724782271168655}
   - component: {fileID: 2939282646619414220}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Temp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -115,7 +115,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6140582744262712182}
   - component: {fileID: 4078827977716639128}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Canvas Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +162,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8993104016732360532}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Flag Graphics
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -345,7 +345,7 @@ GameObject:
   - component: {fileID: 2072590989877320516}
   - component: {fileID: 3281037733032276627}
   - component: {fileID: 4241125268399662802}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Adjacent Mines Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -551,7 +551,7 @@ GameObject:
   - component: {fileID: 7564543028653641653}
   - component: {fileID: 1726408428465627429}
   - component: {fileID: 2780446383538975041}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: Adjacent Mines
   m_TagString: Untagged
   m_Icon: {fileID: 0}
