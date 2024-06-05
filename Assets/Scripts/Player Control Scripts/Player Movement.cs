@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEditor.Timeline.TimelinePlaybackControls;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -20,6 +19,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (UIToggler.uiIsOn) return;
+        if (GameOverScreen.instance.gameIsOver) return;
         HandleMovement(moveInput);
     }
 

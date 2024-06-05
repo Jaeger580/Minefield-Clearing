@@ -17,6 +17,8 @@ public class PhysicalTile : MonoBehaviour
     public delegate void OnFlagChanged(bool flagShowing);
     public OnFlagChanged FlagChangedEvent;
 
+    [ReadOnly] public bool hasFlag = false;
+
     public void OnDisable()
     {
         AdjacentMinesUpdatedEvent = null;
@@ -44,6 +46,7 @@ public class PhysicalTile : MonoBehaviour
 
     public void UpdateFlagPlacement(bool flagShowing)
     {
+        hasFlag = flagShowing;
         FlagChangedEvent?.Invoke(flagShowing);
     }
 }

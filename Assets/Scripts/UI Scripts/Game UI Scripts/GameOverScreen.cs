@@ -9,6 +9,7 @@ public class GameOverScreen : MonoBehaviour
     [SerializeField] private GameObject gameOverScreenObject, uiParentObject, gridViewUIObject;
     [SerializeField] private TMP_Text winLoseText;
     static public GameOverScreen instance;
+    [HideInInspector] public bool gameIsOver;
 
     private void Awake()
     {//Only making a singleton because it's extremely fast to prototype; we'd hook it up properly if we commit to the idea
@@ -20,6 +21,7 @@ public class GameOverScreen : MonoBehaviour
     private void Start()
     {
         if (gameOverScreenObject.activeInHierarchy) gameOverScreenObject.SetActive(false);
+        gameIsOver = false;
     }
 
     private void OnDestroy()
@@ -29,6 +31,8 @@ public class GameOverScreen : MonoBehaviour
 
     public void DisplayGameOver(bool win)
     {
+        gameIsOver = true;
+        Cursor.lockState = CursorLockMode.Confined;
         TimeController.ChangeTimeScale(0f);
         //TimeController.ChangeTimeScale(0f);
         winLoseText.text = win ? "You win!" : "You lose!";

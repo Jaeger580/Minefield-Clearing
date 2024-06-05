@@ -5,14 +5,23 @@ using UnityEngine;
 public class UIToggler : MonoBehaviour
 {
     [SerializeField] private GameObject uiToToggle;
+    static public bool uiIsOn;
     private IEnumerator Start()
     {
         yield return null;
+        uiIsOn = false;
         uiToToggle.SetActive(false);
     }
 
     public void ToggleUI()
     {
-        uiToToggle.SetActive(!uiToToggle.activeInHierarchy);
+        if (GameOverScreen.instance.gameIsOver) return;
+
+        uiIsOn = !uiToToggle.activeInHierarchy;
+        uiToToggle.SetActive(uiIsOn);
+        if(uiIsOn)
+            Cursor.lockState = CursorLockMode.Confined;
+        else
+            Cursor.lockState = CursorLockMode.Locked;
     }
 }
