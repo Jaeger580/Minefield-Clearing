@@ -12,6 +12,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private float moveSpeed = 1.0f;
 
+    [SerializeField]
+    private AudioSource walkSound;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -36,6 +39,12 @@ public class PlayerMovement : MonoBehaviour
 
     public void Move(InputAction.CallbackContext context)
     {
+        if (context.started)
+            walkSound.Play();
+
+        if(context.canceled)
+            walkSound.Stop();
+
         moveInput = context.ReadValue<Vector2>();
     }
 }
