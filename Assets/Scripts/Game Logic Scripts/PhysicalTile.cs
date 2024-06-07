@@ -3,6 +3,7 @@
 public class PhysicalTile : MonoBehaviour
 {
     [SerializeField] private GameObject mineObject;
+    [SerializeField] private AudioSource kaboom;
     [SerializeField] private bool hasMine = false;
     public bool IsMine => hasMine;
 
@@ -41,7 +42,12 @@ public class PhysicalTile : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         TileEnteredEvent?.Invoke();
-        if (hasMine) GameOverScreen.instance.DisplayGameOver(false);
+        if (hasMine)
+        {
+            kaboom.Play();
+            GameOverScreen.instance.DisplayGameOver(false);
+        }
+
     }
 
     public void UpdateFlagPlacement(bool flagShowing)
