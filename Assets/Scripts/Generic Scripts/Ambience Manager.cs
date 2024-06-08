@@ -8,8 +8,8 @@ public class AmbienceManager : MonoBehaviour
     private AudioClip mainWind;
     [SerializeField]
     private AudioClip secondWind;
-    [SerializeField]
-    private AudioClip animals;
+    //[SerializeField]
+    //private AudioClip animals;
     [SerializeField]
     private AudioSource ambience;
 
@@ -17,15 +17,13 @@ public class AmbienceManager : MonoBehaviour
     {
         if (!ambience.isPlaying)
         {
-            int randNum = Random.Range(0, 6);
+            int randNum = Random.Range(0, 5);
             Debug.Log(randNum);
 
             if(randNum < 3)
                 ambience.clip = mainWind;
-            else if(randNum < 5)
-                ambience.clip = secondWind;
             else
-                ambience.clip = animals;
+                ambience.clip = secondWind;
 
             ambience.Play();
         }
