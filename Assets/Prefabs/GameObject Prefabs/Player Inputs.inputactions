@@ -284,6 +284,17 @@
                     "action": "ToggleGrid",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "8d7ecb4c-c1e4-401e-999f-f9402c9d7ec2",
+                    "path": "<Mouse>/rightButton",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToggleGrid",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
