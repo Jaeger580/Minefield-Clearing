@@ -265,7 +265,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainWind: {fileID: 8300000, guid: f28a6ee8b9133c3409006ec92f0e33bc, type: 3}
   secondWind: {fileID: 8300000, guid: 72f5bbe4d01a42e46a83f341ba63bb07, type: 3}
-  animals: {fileID: 8300000, guid: e8a00c0fbfe0c16428871d2dc6964e85, type: 3}
   ambience: {fileID: 244492958}
 --- !u!1 &495118033
 GameObject:
@@ -1223,6 +1222,10 @@ PrefabInstance:
     - target: {fileID: 3836876860464379915, guid: e375ccadc6ec5f440abc9b3aab29de64, type: 3}
       propertyPath: orthographic size
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3968700974352406369, guid: e375ccadc6ec5f440abc9b3aab29de64, type: 3}
+      propertyPath: m_Volume
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 5159489091663027599, guid: e375ccadc6ec5f440abc9b3aab29de64, type: 3}
       propertyPath: m_Name
