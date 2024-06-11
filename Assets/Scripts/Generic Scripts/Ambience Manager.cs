@@ -18,7 +18,7 @@ public class AmbienceManager : MonoBehaviour
         if (!ambience.isPlaying)
         {
             int randNum = Random.Range(0, 5);
-            Debug.Log(randNum);
+            //Debug.Log(randNum);
 
             if(randNum < 3)
                 ambience.clip = mainWind;
